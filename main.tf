@@ -26,10 +26,7 @@ variable "aws_region" {
   default     = "ap-south-1"
 }
 
-variable "key_pair_name" {
-  description = "EC2 Key Pair name"
-  type        = string
-}
+
 
 variable "s3_bucket_prefix" {
   description = "Unique prefix for S3 buckets"
@@ -510,7 +507,7 @@ resource "aws_iam_policy" "static_s3" {
       {
         Sid    = "DenyAllElse"
         Effect = "Deny"
-        Action = ["s3:*"]
+        Action = ["s3:*" ]
         NotResource = [
           aws_s3_bucket.samples.arn, "${aws_s3_bucket.samples.arn}/*",
           aws_s3_bucket.scripts.arn, "${aws_s3_bucket.scripts.arn}/*",
@@ -589,7 +586,6 @@ resource "aws_launch_template" "static_analysis" {
   name_prefix   = "MalwareStaticLT-"
   image_id      = var.linux_ami_id
   instance_type = var.instance_type
-  key_name      = var.key_pair_name
 
   iam_instance_profile { name = aws_iam_instance_profile.static_analysis.name }
 

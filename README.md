@@ -29,7 +29,6 @@ To ensure the automated analyzing instances boot quickly and run reliably withou
 Rename `config.json.example` to `config.json` and replace the placeholder fields with your actual AWS values:
 - `linux_ami_id`: **Paste the AMI ID you just created in Step 1.**
 - `vpc_cidr` & `subnet_cidrs`: Update if you have specific network requirements.
-- `key_name`: Ensure this matches an SSH key pair in your AWS region to avoid conflict errors.
 - `region`: Ensure the AMI you built resides in the correct AWS region specified here.
 
 ### 3. API Keys (`.env`)
