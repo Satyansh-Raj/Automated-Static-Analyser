@@ -39,28 +39,7 @@ pip3 install $PIP_FLAGS \
 pip3 install $PIP_FLAGS \
     oletools
 pip3 install $PIP_FLAGS \
-    pycryptodome
-pip3 install $PIP_FLAGS \
-    requests \
-    beautifulsoup4 \
-    lxml
-pip3 install $PIP_FLAGS \
-    pillow
-pip3 install $PIP_FLAGS \
-    reportlab \
-    jinja2 \
-    markdown \
-    weasyprint
-pip3 install $PIP_FLAGS \
-    pandas \
-    numpy
-pip3 install $PIP_FLAGS \
-    python-dateutil \
-    pytz \
-    colorama \
-    tqdm
-pip3 install $PIP_FLAGS \
-    python-json-logger
+    requests
 pip3 install $PIP_FLAGS \
     pytest \
     black \
@@ -107,7 +86,6 @@ python3 -c "import magic; print('[OK] python-magic')" 2>/dev/null || echo "[FAIL
 python3 -c "import ssdeep; print('[OK] ssdeep')" 2>/dev/null || echo "[FAIL] ssdeep"
 python3 -c "import capstone; print('[OK] capstone')" 2>/dev/null || echo "[FAIL] capstone"
 python3 -c "import oletools; print('[OK] oletools')" 2>/dev/null || echo "[FAIL] oletools"
-python3 -c "import pandas; print('[OK] pandas')" 2>/dev/null || echo "[FAIL] pandas"
 echo ""
 echo "========================================="
 echo "           Setup Complete!"
