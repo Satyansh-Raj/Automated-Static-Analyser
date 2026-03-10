@@ -53,7 +53,6 @@ class AWSMalwareAnalyzer:
             "aws_region": "us-east-1",
             "instance_type": "t3.medium",
             "ami_id": "ami-04614d1876ac7381b",
-            "key_pair_name": "Malware_Project",
             "security_group_id": "sg-malware-analysis",
             "subnet_id": "",
             "s3_bucket": "malware-analysis-results",
