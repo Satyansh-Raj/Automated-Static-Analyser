@@ -1,0 +1,213 @@
+# AWS Malware Analysis - Git Ignore File
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+*.cover
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+
+# Virtual Environments
+venv/
+ENV/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+terraform.tfvars
+*.tfvars
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+crash.log
+*.tfplan
+
+# AWS
+.aws/
+aws-credentials
+
+# SSH Keys - NEVER commit these!
+*.pem
+*.key
+*.pub
+id_rsa
+id_rsa.pub
+id_dsa
+id_dsa.pub
+id_ecdsa
+id_ecdsa.pub
+id_ed25519
+id_ed25519.pub
+known_hosts
+authorized_keys
+
+# Malware Samples - CRITICAL: Never commit malware!
+samples/
+malware/
+*.exe
+*.dll
+*.bin
+*.virus
+*.malware
+*.infected
+*.sample
+quarantine/
+
+# Analysis Results (may contain sensitive data)
+reports/
+results/
+analysis_results/
+*.pdf
+*.html
+output/
+*.log
+
+# Configuration with secrets
+config.json
+config.yaml
+secrets.json
+secrets.yaml
+*.secret
+
+# Temporary files
+*.tmp
+*.temp
+*.cache
+tmp/
+temp/
+cache/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Archive files (may contain malware)
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+# Memory dumps
+*.dmp
+*.dump
+*.core
+*.vmem
+*.raw
+
+# PCAP files
+*.pcap
+*.pcapng
+*.cap
+
+# System files
+Thumbs.db
+desktop.ini
+.directory
+
+# Documentation build
+docs/_build/
+site/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Node.js (if using any JS tools)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Lambda deployment packages
+lambda_*.zip
+function.zip
+
+# CloudFormation
+packaged.yaml
+samconfig.toml
+
+# Custom ignore patterns
+/private/
+/sensitive/
+/confidential/
+*.private
+*.sensitive
+*.confidential
+
+# Analysis workspace
+workspace/
+sandbox/
+isolated/
+
+# Snapshots
+snapshots/
+*.snapshot
+
+# Certificates
+*.crt
+*.cert
+*.cer
+*.p12
+*.pfx
+
+# DO NOT REMOVE - Safety reminder
+# This project handles MALWARE. Always:
+# 1. Use isolated systems
+# 2. Never commit actual malware samples
+# 3. Keep all analysis in secure environments
+# 4. Follow security best practices
+radare2/
+agent/
+

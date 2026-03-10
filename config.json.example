@@ -1,0 +1,50 @@
+{
+  "aws_region": "ap-south-1",
+  "instance_type": "t3.medium",
+  "ami_id": "ami-04614d1876ac7381b",
+  "key_pair_name": "Malware_Project",
+  "security_group_id": "",
+  "subnet_id": "",
+  "s3_bucket": "malware-analysis-results",
+  "iam_instance_profile": "ec2_analysis_profile",
+  "use_launch_template": true,
+  "output_formats": [
+    "json",
+    "txt"
+  ],
+  "analysis_timeout": 3600,
+  "static_analysis": {
+    "enabled": true,
+    "extract_strings": true,
+    "min_string_length": 4,
+    "max_strings": 1000,
+    "pe_analysis": true,
+    "entropy_analysis": true,
+    "packer_detection": true,
+    "anti_analysis_detection": true,
+    "resource_extraction": true,
+    "hex_dump_bytes": 256
+  },
+  "reporting": {
+    "include_iocs": true,
+    "include_screenshots": true,
+    "include_network_traffic": true,
+    "include_hex_dump": true,
+    "include_strings": true,
+    "verbose": true
+  },
+  "security": {
+    "isolate_network": true,
+    "use_private_subnet": true,
+    "enable_flow_logs": true,
+    "encrypt_results": false,
+    "auto_terminate": true,
+    "max_file_size_mb": 100
+  },
+  "tools": {
+    "yara_rules_path": "/opt/yara-rules",
+    "clamav_enabled": true,
+    "virustotal_api_key": "",
+    "hybrid_analysis_api_key": ""
+  }
+}
