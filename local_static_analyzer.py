@@ -12,7 +12,6 @@ from math import log2
 from datetime import datetime
 from pathlib import Path
 import boto3
-import paramiko
 import magic
 import pefile
 import ssdeep
@@ -2895,57 +2894,6 @@ class StaticAnalyzer:
         except Exception as e:
             logger.error(f"Error generating suspicion report: {e}")
             self.results["why_suspicious"] = {"error": str(e)}
-class RemoteExecutor:
-    def __init__(self, instance_ip: str, key_path: str, username: str = 'ec2-user'):
-        self.instance_ip = instance_ip
-        self.key_path = key_path
-        self.username = username
-        self.ssh_client = None
-    def connect(self):
-        try:
-            self.ssh_client = paramiko.SSHClient()
-            self.ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-            key = paramiko.RSAKey.from_private_key_file(self.key_path)
-            self.ssh_client.connect(
-                hostname=self.instance_ip,
-                username=self.username,
-                pkey=key,
-                timeout=30
-            )
-            logger.info(f"SSH connection established to {self.instance_ip}")
-        except Exception as e:
-            logger.error(f"Failed to establish SSH connection: {e}")
-            raise
-    def execute_command(self, command: str) -> tuple:
-        try:
-            stdin, stdout, stderr = self.ssh_client.exec_command(command)
-            exit_status = stdout.channel.recv_exit_status()
-            return stdout.read().decode(), stderr.read().decode(), exit_status
-        except Exception as e:
-            logger.error(f"Failed to execute command: {e}")
-            raise
-    def upload_file(self, local_path: str, remote_path: str):
-        try:
-            sftp = self.ssh_client.open_sftp()
-            sftp.put(local_path, remote_path)
-            sftp.close()
-            logger.info(f"Uploaded {local_path} to {remote_path}")
-        except Exception as e:
-            logger.error(f"Failed to upload file: {e}")
-            raise
-    def download_file(self, remote_path: str, local_path: str):
-        try:
-            sftp = self.ssh_client.open_sftp()
-            sftp.get(remote_path, local_path)
-            sftp.close()
-            logger.info(f"Downloaded {remote_path} to {local_path}")
-        except Exception as e:
-            logger.error(f"Failed to download file: {e}")
-            raise
-    def disconnect(self):
-        if self.ssh_client:
-            self.ssh_client.close()
-            logger.info("SSH connection closed")
 def main():
     parser = argparse.ArgumentParser(description='AWS-based Automated Malware Static Analysis')
     parser.add_argument('malware_sample', help='Path to malware sample')

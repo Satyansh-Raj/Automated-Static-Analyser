@@ -30,9 +30,6 @@ pip3 install $PIP_FLAGS \
     boto3 \
     botocore
 pip3 install $PIP_FLAGS \
-    paramiko \
-    pywinrm
-pip3 install $PIP_FLAGS \
     python-magic \
     pefile \
     ssdeep \
@@ -103,8 +100,6 @@ echo "[6/6] Creating directories and verifying..."
 mkdir -p ~/malware-analysis/{samples,reports,tools,temp}
 echo ""
 echo "Verifying installations..."
-python3 -c "import winrm; print('[OK] pywinrm')" 2>/dev/null || echo "[FAIL] pywinrm"
-python3 -c "import paramiko; print('[OK] paramiko')" 2>/dev/null || echo "[FAIL] paramiko"
 python3 -c "import boto3; print('[OK] boto3')" 2>/dev/null || echo "[FAIL] boto3"
 python3 -c "import pefile; print('[OK] pefile')" 2>/dev/null || echo "[FAIL] pefile"
 python3 -c "import yara; print('[OK] yara-python')" 2>/dev/null || echo "[FAIL] yara-python"
