@@ -446,7 +446,17 @@ def main():
     if a.stdout:print(json.dumps(r,indent=2))
     else:
         o=a.output or f"{r.get('hashes',{}).get('sha256','out')}.json"
-        with open(o,'w')as f:json.dump(r,f,indent=2);print(f"Saved:{o}")
+        with open(o,'w')as f:json.dump(r,f,indent=2);print(f"Saved JSON:{o}")
+        
+        # Auto-parse to text
+        try:
+            ps=os.path.join(os.path.dirname(os.path.abspath(__file__)),'parser.py')
+            to=o.replace('.json','.txt')
+            subprocess.run(['python3',ps,o,'-o',to],check=True)
+            print(f"Saved Text Report:{to}")
+        except Exception as e:
+            print(f"Err Parsing:{e}")
+
     rs=r.get("risk_score",{});vt=r.get("threat_intel",{}).get("vt",{})
     print(f"\n{'='*50}\nVERDICT:{rs.get('verdict','?')}(Score:{rs.get('score',0)}/100)")
     if vt.get("det"):print(f"VT:{vt.get('pos',0)}/{vt.get('tot',0)}-{vt.get('threat','')}")

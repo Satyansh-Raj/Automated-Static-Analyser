@@ -69,10 +69,7 @@ If you wish to run the analysis engine directly on your own Linux machine withou
    ```bash
    python3 local_static_analyzer.py /path/to/malware/sample.exe
    ```
-3. Execute the parser on the resulting JSON to read the final score:
-   ```bash
-   python3 parser.py results.json
-   ```
+   *Note: This will automatically generate both a `results.json` and a human-readable `results.txt` report.*
 
 ---
 
