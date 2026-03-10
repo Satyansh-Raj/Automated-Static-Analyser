@@ -40,6 +40,12 @@ VT_API_KEY=your_virustotal_api_key_here
 ```
 *(If you do not provide keys, the analyzer will gracefully skip the external lookup tests and perform offline heuristic analysis).*
 
+### 4. IAM / AWS Credentials (Cloud Only)
+If you plan to use the AWS automated method, you must have the AWS CLI installed and configured with appropriate IAM user credentials (with EC2, VPC, S3 permissions) on your host machine.
+```bash
+aws configure
+```
+
 ---
 
 ## 🚀 Usage Guide
@@ -77,4 +83,5 @@ If you wish to run the analysis engine directly on your own Linux machine withou
 - **`main.tf`**: Provisions the secure VPC, private subnets, security groups, IAM roles, and VPC Endpoints for S3 entirely for static analysis.
 - **`malware_analysis_orchestrator.py`**: The "Master" script. Uploads samples to S3, dispatches the EC2 instances, polls for completion, and cleans up.
 - **`malware_static_analyzer.py`**: The core "Agent" payload that runs headlessly inside the isolated cloud EC2 instance.
+- **`local_static_analyzer.py`**: The full-featured standalone static analyzer for local/offline analysis without AWS requirements.
 - **`parser.py`**: Translates the dense JSON output into an analyst-friendly text report highlighting risk scores and matched rules.
