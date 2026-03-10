@@ -2880,8 +2880,8 @@ class StaticAnalyzer:
             if score >= 50:
                 report["analyst_notes"].append(
                     f"⚠️ HIGH RISK SAMPLE: Score {score} indicates multiple malicious indicators. "
-                    "This sample exhibits behaviors consistent with malware. Recommend sandbox execution "
-                    "and network monitoring before allowing in any environment."
+                    "This sample exhibits behaviors consistent with malware. Recommend extreme caution "
+                    "and isolation before allowing in any environment."
                 )
             elif score >= 25:
                 report["analyst_notes"].append(

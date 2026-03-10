@@ -545,7 +545,7 @@ resource "aws_security_group" "static_analysis" {
   description = "Static analysis - HTTPS to endpoints, inter-instance"
   vpc_id      = aws_vpc.malware_vpc.id
 
-  # Allow from dynamic analysis instances
+  # Allow from other static analysis instances (Self)
   ingress {
     from_port   = 0
     to_port     = 0
