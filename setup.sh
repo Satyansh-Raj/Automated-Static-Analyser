@@ -16,7 +16,7 @@ echo ""
 echo "[1/6] Installing system packages..."
 $SUDO apt-get update -y
 $SUDO apt-get install -y \
-    python3 python3-pip python3-dev python3-venv build-essential \
+    python3 python3-pip python3-dev python3-venv build-essential python3-setuptools pkg-config \
     libssl-dev libffi-dev libmagic-dev libfuzzy-dev \
     ssdeep yara clamav clamav-daemon \
     git wget curl unzip p7zip-full upx-ucl \
@@ -25,7 +25,7 @@ $SUDO apt-get install -y \
     libcairo2 libgirepository1.0-dev
 echo ""
 echo "[2/6] Installing Python packages..."
-pip3 install --upgrade pip $PIP_FLAGS
+pip3 install --upgrade pip setuptools wheel $PIP_FLAGS
 pip3 install $PIP_FLAGS \
     boto3 \
     botocore
