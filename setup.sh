@@ -26,16 +26,24 @@ $SUDO apt-get install -y \
 echo ""
 echo "[2/6] Installing Python packages..."
 pip3 install --upgrade pip setuptools wheel $PIP_FLAGS
+
+# Install cffi first - needed as a build dependency for ssdeep
+pip3 install $PIP_FLAGS cffi
+
 pip3 install $PIP_FLAGS \
     boto3 \
     botocore
 pip3 install $PIP_FLAGS \
     python-magic \
     pefile \
-    ssdeep \
     yara-python \
     capstone \
     pyelftools
+
+# Install ssdeep separately with --no-build-isolation
+# This is required because ssdeep's setup.py uses pkg_resources (from setuptools),
+# which is not available in pip's isolated build environment on Python 3.12+.
+pip3 install $PIP_FLAGS --no-build-isolation ssdeep
 pip3 install $PIP_FLAGS \
     oletools
 pip3 install $PIP_FLAGS \
